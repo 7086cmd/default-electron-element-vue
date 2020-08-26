@@ -41,8 +41,9 @@
 
                 </el-footer>
             </el-container>
-            <el-aside width="120px">
+            <el-aside width="160px">
                 <div v-if="platform == 'win32'">
+                    <el-button type="primary" circle icon="el-icon-full-screen" @click="require('electron').ipcRenderer.send('fullMainWindow')" size="mini"></el-button>
                     <el-button type="warning" circle icon="el-icon-minus" @click="require('electron').ipcRenderer.send('minMainWindow')" size="mini"></el-button>
                     <el-button type="success" circle icon="el-icon-plus" @click="require('electron').ipcRenderer.send('maxMainWindow')" size="mini"></el-button>
                     <el-button type="danger" circle icon="el-icon-close" @click="require('electron').ipcRenderer.send('closeMainWindow')" size="mini"></el-button>

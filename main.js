@@ -60,7 +60,7 @@ app.on('ready', () => {
     // view.setBounds(viewBounds)
     mainWindow.setBrowserView(view)
     view.setBounds(viewBounds)
-    view.webContents.loadURL('https://www.google.com.hk')
+    view.webContents.loadURL(path.join('file://', __dirname, './index.html'))
     ipcMain.on('closeMainWindow', () => {
         mainWindow.close()
     })
@@ -74,6 +74,9 @@ app.on('ready', () => {
         else {
             mainWindow.maximize()
         }
+    })
+    ipcMain.on('fullMainWindow', () => {
+        mainWindow.setFullScreen(!mainWindow.isFullScreen())
     })
     mainWindow.on('close', () => {
         mainWindow = null
